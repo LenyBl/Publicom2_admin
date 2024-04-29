@@ -29,7 +29,7 @@ public class UtilisateurDAO {
 
     //Créer un nouvel utilisateur
     public void create(Utilisateur oneUser) throws SQLException {
-        String query = "INSERT INTO utilisateur (IDENTIFIANTUTILISATEUR, MOTDEPASSEUTILISATEUR, NOMUTILISATEUR, PRENOMUTILISATEUR) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO UTILISATEUR (IDENTIFIANTUTILISATEUR, MOTDEPASSEUTILISATEUR, NOMUTILISATEUR, PRENOMUTILISATEUR) VALUES (?, ?, ?, ?)";
 
         try (PreparedStatement stmt = this.connexion.prepareStatement(query)) {
             stmt.setString(1, oneUser.getUsernameUser());
@@ -46,7 +46,7 @@ public class UtilisateurDAO {
 
         Utilisateur oneUser = null;
 
-        String query = "SELECT * FROM utilisateur Where IDUTILISATEUR = " + idUser;
+        String query = "SELECT * FROM UTILISATEUR Where IDUTILISATEUR = " + idUser;
 
         try {
             Statement statement = this.connexion.createStatement();
@@ -71,7 +71,7 @@ public class UtilisateurDAO {
     public List<Utilisateur> getAll() throws SQLException {
 
         ArrayList<Utilisateur> users = new ArrayList<Utilisateur>();
-        String query = "SELECT * FROM utilisateur";
+        String query = "SELECT * FROM UTILISATEUR";
 
         try {
             Statement statement = this.connexion.createStatement();
@@ -96,7 +96,7 @@ public class UtilisateurDAO {
     //Modifie les informations d'un utilisateur à partir de son ID
     public void updateWithPassword(Utilisateur oneUser) throws SQLException {
 
-        String query = "UPDATE utilisateur SET IDENTIFIANTUTILISATEUR = ? , MOTDEPASSEUTILISATEUR = ?, NOMUTILISATEUR = ?, PRENOMUTILISATEUR = ? WHERE IDUTILISATEUR = ?";
+        String query = "UPDATE UTILISATEUR SET IDENTIFIANTUTILISATEUR = ? , MOTDEPASSEUTILISATEUR = ?, NOMUTILISATEUR = ?, PRENOMUTILISATEUR = ? WHERE IDUTILISATEUR = ?";
 
         try (PreparedStatement stmt = this.connexion.prepareStatement(query)) {
 
@@ -118,7 +118,7 @@ public class UtilisateurDAO {
         //Modifie les informations d'un utilisateur à partir de son ID
     public void updateWithNoPassword(Utilisateur oneUser) throws SQLException {
 
-        String query = "UPDATE utilisateur SET IDENTIFIANTUTILISATEUR = ? , NOMUTILISATEUR = ?, PRENOMUTILISATEUR = ? WHERE IDUTILISATEUR = ?";
+        String query = "UPDATE UTILISATEUR SET IDENTIFIANTUTILISATEUR = ? , NOMUTILISATEUR = ?, PRENOMUTILISATEUR = ? WHERE IDUTILISATEUR = ?";
 
         try (PreparedStatement stmt = this.connexion.prepareStatement(query)) {
 
@@ -141,7 +141,7 @@ public class UtilisateurDAO {
 
         Statement stmt = this.connexion.createStatement();
 
-        String query = "DELETE FROM utilisateur WHERE IDUTILISATEUR = " + idUser;
+        String query = "DELETE FROM UTILISATEUR WHERE IDUTILISATEUR = " + idUser;
 
         stmt.executeUpdate(query);
 
@@ -153,7 +153,7 @@ public class UtilisateurDAO {
 
         Statement stmt = this.connexion.createStatement();
 
-        String query = "DELETE FROM utilisateur WHERE IDUTILISATEUR = " + oneUser.getIdUser();
+        String query = "DELETE FROM UTILISATEUR WHERE IDUTILISATEUR = " + oneUser.getIdUser();
 
         stmt.executeUpdate(query);
 
